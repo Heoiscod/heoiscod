@@ -1,0 +1,59 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.5" stop-color="#F5F9FF"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="197" y1="138" x2="1006" y2="510" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EAF5FF"/>
+      <stop offset="0.3" stop-color="#B6D9FF"/>
+      <stop offset="0.7" stop-color="#37A5FF"/>
+      <stop offset="1" stop-color="#0D6BFF"/>
+    </linearGradient>
+    <filter id="blueBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#38BDF8" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g opacity="0.18">
+    <path d="M40 70L380 70" stroke="#3BA1FF" stroke-width="2"/>
+    <path d="M820 70L1160 70" stroke="#3BA1FF" stroke-width="2"/>
+    <path d="M80 560L1130 560" stroke="#3BA1FF" stroke-width="2"/>
+  </g>
+
+  <g opacity="0.28">
+    <circle cx="180" cy="160" r="2" fill="#7DD3FC"/>
+    <circle cx="1030" cy="120" r="2" fill="#7DD3FC"/>
+    <circle cx="1090" cy="490" r="2" fill="#7DD3FC"/>
+    <circle cx="132" cy="470" r="2" fill="#7DD3FC"/>
+    <circle cx="1088" cy="258" r="2" fill="#7DD3FC"/>
+  </g>
+
+  <g filter="url(#softGlow)">
+    <rect x="240" y="212" width="720" height="4" rx="2" fill="#4CC9FF"/>
+    <rect x="240" y="415" width="720" height="4" rx="2" fill="#4CC9FF"/>
+  </g>
+
+  <g>
+    <text x="600" y="310" text-anchor="middle" font-family="'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="104" font-weight="800" letter-spacing="0.8" fill="#0B1627">&lt;HeoIsCod&gt;</text>
+    <text x="600" y="310" text-anchor="middle" font-family="'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="104" font-weight="800" letter-spacing="0.8" fill="#1E6EF2" opacity="0.65" transform="translate(7 0)">&lt;HeoIsCod&gt;</text>
+    <text x="600" y="310" text-anchor="middle" font-family="'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="104" font-weight="800" letter-spacing="0.8" fill="#0DB7FF" opacity="0.9" transform="translate(-7 0)" filter="url(#blueBlur)">&lt;HeoIsCod&gt;</text>
+  </g>
+
+  <g>
+    <text x="600" y="380" text-anchor="middle" font-family="'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="3" fill="#0B1627">#WEB DEV • UI/UX DESIGNER • TROUBLESHOOTING</text>
+  </g>
+
+  <g opacity="0.9">
+    <path d="M430 178L495 178" stroke="#52D0FF" stroke-width="8" stroke-linecap="round"/>
+    <path d="M705 178L770 178" stroke="#52D0FF" stroke-width="8" stroke-linecap="round"/>
+    <path d="M430 454L495 454" stroke="#52D0FF" stroke-width="8" stroke-linecap="round"/>
+    <path d="M705 454L770 454" stroke="#52D0FF" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>
