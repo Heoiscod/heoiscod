@@ -1,0 +1,18 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="64" height="64" fill="#0A0E1A"/>
+
+  <!-- glitch echoes of the H -->
+  <g font-family="'JetBrains Mono', 'Courier New', monospace" font-weight="800" font-size="48">
+    <text x="12" y="48" fill="#FF2D55" opacity="0.5" transform="translate(-2,-1.5)">H</text>
+    <text x="12" y="48" fill="#00B8FF" opacity="0.5" transform="translate(2,1.5)">H</text>
+    <text x="12" y="48" fill="#ffffff">H</text>
+  </g>
+
+  <!-- cursor accent bottom right of the H -->
+  <rect x="50" y="34" width="5" height="16" fill="#0047FF">
+    <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.45;0.5;0.95;1" dur="1.2s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- bottom accent line -->
+  <rect x="8" y="54" width="48" height="3" fill="#0047FF"/>
+</svg>
