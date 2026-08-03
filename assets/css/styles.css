@@ -772,15 +772,26 @@ footer {
 footer .brand-foot {
   color: var(--ink);
   font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 footer .foot-links {
   display: flex;
   gap: 24px;
+  flex-wrap: wrap;
+}
+
+footer .foot-links a {
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
 }
 
 footer a:hover {
   color: var(--blue);
+}
+
+footer .copyright {
+  margin-left: auto;
 }
 
 body.blog-page {
@@ -913,5 +924,35 @@ body.blog-page {
 
   .blog-post-card {
     padding: 24px;
+  }
+
+  footer {
+    padding: 30px 6vw 26px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  footer .brand-foot,
+  footer .foot-links,
+  footer .copyright {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer .foot-links {
+    gap: 10px 18px;
+    font-size: 11px;
+    flex-wrap: wrap;
+  }
+
+  footer .copyright {
+    margin-left: 0;
+    color: var(--ink-soft);
+    opacity: 0.9;
   }
 }
