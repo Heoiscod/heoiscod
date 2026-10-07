@@ -44,24 +44,30 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#blog">Blog</a></li>
+      <li><a href="#languages">Languages</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle-label">Dark</span>
+        </button>
+      </li>
     </ul>
   </nav>
 
   <header class="hero" id="home">
     <div class="hero-grid"></div>
     <div class="glitch-wrap">
-      <p class="eyebrow">IT Student · Freelance Dev</p>
+      <p class="eyebrow">Freelance Web Developer</p>
       <h1 class="glitch" data-text="BUILDING&#10;THINGS THAT&#10;DON'T BREAK.">
         <span>BUILDING</span>
         <span>THINGS THAT</span>
         <span class="accent">DON'T BREAK.</span>
       </h1>
       <p class="hero-sub">
-        I'm an IT student who codes, debugs, and ships — websites, small systems,
-        and the odd script that saves someone an afternoon. I also help <b>business owners</b>
-        get practical digital solutions without the unnecessary complexity. <b>Currently open</b>
-        for freelance and student-rate projects.
+        I'm a freelance web developer who codes, debugs, and ships websites, small systems,
+        and handy scripts that save time. I help <b>business owners</b> find practical digital
+        solutions without unnecessary complexity. <b>I'm currently available</b> for freelance projects.
       </p>
       <div class="hero-cta">
         <a href="#services" class="btn">View Services</a>
@@ -112,21 +118,89 @@
       <span class="tag">hands-on work</span>
     </div>
     <div class="projects-grid">
-      <div class="coming-soon-block">
-        <h3>COMING SOON</h3>
-        <p>New project highlights are being prepared.</p>
-        <div class="download-meter">
-          <div class="download-head">
-            <span>DOWNLOADING</span>
-            <strong>50%</strong>
-          </div>
-          <div class="download-bar">
-            <span></span>
-          </div>
-        </div>
-      </div>
+      <button class="project-card" type="button" aria-haspopup="dialog" aria-controls="pickle-social-modal">
+        <span class="project-image-wrap">
+          <img
+            class="project-image"
+            src="assets/images/pickle-social-booking.png"
+            alt="Pickle Social Cebu online court booking page"
+          >
+          <span class="project-badge">LATEST PROJECT</span>
+        </span>
+        <span class="project-card-copy">
+          <span class="idx">01 / BOOKING SYSTEM</span>
+          <span class="project-card-title">Pickle Social - Cebu</span>
+          <span class="project-card-description">A booking system for Pickle Social Cebu's pickleball community.</span>
+          <span class="project-card-link">VIEW PROJECT <span aria-hidden="true">↗</span></span>
+        </span>
+      </button>
+      <article class="project-card project-card-coming">
+        <span class="project-coming-index">02 / HOSPITALITY</span>
+        <span class="project-card-title">Resort System</span>
+        <span class="project-coming-status">COMING SOON</span>
+      </article>
+      <article class="project-card project-card-coming">
+        <span class="project-coming-index">03 / POINT OF SALE</span>
+        <span class="project-card-title">Point of Sale - Design 0</span>
+        <span class="project-coming-status">COMING SOON</span>
+      </article>
     </div>
   </section>
+
+  <dialog class="project-modal" id="pickle-social-modal" aria-labelledby="pickle-social-title">
+    <div class="project-modal-shell">
+      <form method="dialog" class="project-modal-close-wrap">
+        <button class="project-modal-close" type="submit" aria-label="Close project details">×</button>
+      </form>
+      <div class="project-modal-image">
+        <img
+          src="assets/images/pickle-social-booking.png"
+          alt="Pickle Social Cebu online court booking page"
+        >
+      </div>
+      <div class="project-modal-content">
+        <p class="eyebrow">PROJECT 01 <span aria-hidden="true">/</span> BOOKING SYSTEM</p>
+        <h2 id="pickle-social-title">Pickle Social - Cebu</h2>
+        <p class="project-modal-summary">A convenient online way for the Pickle Social Cebu community to book a pickleball court.</p>
+        <a
+          class="project-live-link"
+          href="https://picklesocialcebu.site"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>
+            <span class="project-live-label">LIVE PROJECT</span>
+            <span class="project-live-url">picklesocialcebu.site</span>
+          </span>
+          <span class="project-live-action">VISIT SITE <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <section class="project-detail">
+          <h3>ABOUT THE PROJECT</h3>
+          <p>A booking system for Pickle Social Cebu, helping its pickleball community arrange bookings in one place.</p>
+        </section>
+
+        <section class="project-detail">
+          <h3>LOCATION</h3>
+          <p>It is made for the pickleball community in Cebu, Philippines. The specific venue can be added when confirmed.</p>
+        </section>
+
+        <section class="project-detail">
+          <h3>DEVELOPMENT</h3>
+          <p>I developed it as a digital booking system for Pickle Social Cebu. The goal was to make arranging a booking straightforward for the pickleball community.</p>
+        </section>
+
+        <section class="project-detail">
+          <h3>LESSONS LEARNED</h3>
+          <ul>
+            <li>A booking flow should make the next step clear to users.</li>
+            <li>Keep booking details easy to review before users confirm.</li>
+            <li>Design for mobile so users can make bookings wherever they are.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </dialog>
 
   <section id="blog">
     <div class="section-head">
@@ -148,6 +222,21 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section id="languages">
+    <div class="section-head">
+      <h2 class="scroll-shuffle">Programming Languages</h2>
+      <span class="tag">tools I've used</span>
+    </div>
+    <p class="languages-intro">Languages and technologies I've used in projects and coursework.</p>
+    <ul class="languages-list" aria-label="Programming languages and technologies">
+      <li>Java</li>
+      <li>HTML/CSS</li>
+      <li>Python</li>
+      <li>C#</li>
+      <li>C++</li>
+    </ul>
   </section>
 
   <section id="contact">
@@ -173,6 +262,7 @@
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
       <a href="/blog">Blog</a>
+      <a href="#languages">Languages</a>
     </div>
     <div class="copyright">© <span id="year"></span> &nbsp;@heoiscode</div>
   </footer>

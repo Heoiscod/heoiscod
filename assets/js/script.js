@@ -1,4 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.querySelector('.theme-toggle');
+  const themeIcon = themeToggle?.querySelector('.theme-toggle-icon');
+  const themeLabel = themeToggle?.querySelector('.theme-toggle-label');
+  let savedTheme = null;
+
+  try {
+    savedTheme = window.localStorage.getItem('heoiscode-theme');
+  } catch (error) {
+    console.warn('Unable to load the saved color theme.', error);
+  }
+
+  const setTheme = (theme) => {
+    const isDark = theme === 'dark';
+    document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+
+    if (themeToggle && themeIcon && themeLabel) {
+      themeIcon.textContent = isDark ? '☀' : '☾';
+      themeLabel.textContent = isDark ? 'Light' : 'Dark';
+      themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+    }
+  };
+
+  setTheme(savedTheme === 'dark' ? 'dark' : 'light');
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      setTheme(nextTheme);
+
+      try {
+        window.localStorage.setItem('heoiscode-theme', nextTheme);
+      } catch (error) {
+        console.warn('Unable to save the color theme preference.', error);
+      }
+    });
+  }
+
   window.setTimeout(() => {
     document.body.classList.add('loaded');
   }, 850);
@@ -22,6 +60,21 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.remove('nav-open');
         navToggle.setAttribute('aria-expanded', 'false');
       });
+    });
+  }
+
+  const projectModal = document.querySelector('#pickle-social-modal');
+  const projectCard = document.querySelector('.project-card');
+
+  if (projectModal instanceof HTMLDialogElement && projectCard) {
+    projectCard.addEventListener('click', () => {
+      projectModal.showModal();
+    });
+
+    projectModal.addEventListener('click', (event) => {
+      if (event.target === projectModal) {
+        projectModal.close();
+      }
     });
   }
 
