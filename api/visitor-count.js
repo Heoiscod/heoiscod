@@ -32,7 +32,7 @@ module.exports = async function handler(request, response) {
     }
 
     const result = await counterResponse.json();
-    const value = result.value ?? result.data?.value;
+    const value = result.data?.up_count;
 
     if (!Number.isSafeInteger(value) || value < 0) {
       console.error('CounterAPI returned an invalid visitor count.');
