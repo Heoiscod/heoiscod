@@ -13,12 +13,12 @@ module.exports = async function handler(request, response) {
     return response.status(503).json({ error: 'Visitor counter is not configured.' });
   }
 
-  const endpoint = `https://api.counterapi.dev/v2/${encodeURIComponent(COUNTERAPI_WORKSPACE)}/landing-page-views/up`;
+  const endpoint = `https://api.counterapi.dev/v2/${encodeURIComponent(COUNTERAPI_WORKSPACE)}/first-counter-6106/up`;
 
   try {
     const counterResponse = await fetch(endpoint, {
       headers: {
-        Authorization: COUNTERAPI_TOKEN
+        Authorization: `Bearer ${COUNTERAPI_TOKEN}`
       },
       signal: AbortSignal.timeout(8000)
     });
