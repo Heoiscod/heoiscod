@@ -25,7 +25,10 @@ module.exports = async function handler(request, response) {
 
     if (!counterResponse.ok) {
       console.error(`CounterAPI request failed with status ${counterResponse.status}.`);
-      return response.status(502).json({ error: 'Unable to update visitor count.' });
+      return response.status(502).json({
+        error: 'CounterAPI rejected the visitor-count request.',
+        upstreamStatus: counterResponse.status
+      });
     }
 
     const result = await counterResponse.json();
@@ -33,12 +36,12 @@ module.exports = async function handler(request, response) {
 
     if (!Number.isSafeInteger(value) || value < 0) {
       console.error('CounterAPI returned an invalid visitor count.');
-      return response.status(502).json({ error: 'Unable to read visitor count.' });
+      return response.status(502).json({ error: 'CounterAPI returned an invalid visitor count.' });
     }
 
     return response.status(200).json({ value });
   } catch (error) {
     console.error('CounterAPI request failed.', error);
-    return response.status(502).json({ error: 'Unable to reach visitor counter.' });
+    return response.status(502).json({ error: 'Unable to reach CounterAPI.' });
   }
 };
