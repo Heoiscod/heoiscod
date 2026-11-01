@@ -46,6 +46,145 @@ document.addEventListener('DOMContentLoaded', () => {
     year.textContent = new Date().getFullYear();
   }
 
+  const visitorCount = document.querySelector('#visitor-count');
+
+  if (visitorCount) {
+    fetch('/api/visitor-count', { cache: 'no-store' })
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`Visitor counter request failed with status ${response.status}.`);
+        }
+
+        const result = await response.json();
+
+        if (!Number.isSafeInteger(result.value) || result.value < 0) {
+          throw new Error('Visitor counter returned an invalid count.');
+        }
+
+        visitorCount.textContent = `PAGE VIEWS // ${new Intl.NumberFormat('en-PH').format(result.value)}`;
+      })
+      .catch((error) => {
+        console.error('Unable to load the visitor count.', error);
+        visitorCount.textContent = 'PAGE VIEWS // UNAVAILABLE';
+      });
+  }
+
+  const customCursor = document.querySelector('.custom-cursor');
+  const supportsCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (customCursor instanceof HTMLElement && supportsCustomCursor) {
+    const updateCursor = (event) => {
+      if (event.pointerType !== 'mouse') {
+        return;
+      }
+
+      document.documentElement.classList.add('has-custom-cursor');
+      customCursor.classList.add('is-visible');
+      customCursor.classList.remove('is-hidden');
+      customCursor.style.setProperty('--cursor-x', `${event.clientX}px`);
+      customCursor.style.setProperty('--cursor-y', `${event.clientY}px`);
+
+      const target = event.target instanceof Element ? event.target : null;
+      const isTextEntry = target?.closest('input, textarea, [contenteditable="true"]');
+      const isInteractive = target?.closest('a, button, select, summary, [role="button"], .hero-mascot');
+      customCursor.classList.toggle('is-hidden', Boolean(isTextEntry));
+      customCursor.classList.toggle('is-hovering', Boolean(isInteractive));
+    };
+
+    const hideCursor = () => {
+      customCursor.classList.remove('is-visible');
+    };
+
+    document.addEventListener('pointermove', updateCursor);
+    document.addEventListener('pointerdown', updateCursor);
+    document.addEventListener('pointerout', (event) => {
+      if (event.relatedTarget === null) {
+        hideCursor();
+      }
+    });
+    document.addEventListener('keydown', () => {
+      customCursor.classList.add('is-hidden');
+      hideCursor();
+      document.documentElement.classList.remove('has-custom-cursor');
+    });
+  }
+
+  const mascot = document.querySelector('.hero-mascot');
+
+  if (mascot instanceof HTMLElement) {
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
+
+    const placeMascot = (left, top) => {
+      const bounds = mascot.getBoundingClientRect();
+      const maxLeft = Math.max(0, window.innerWidth - bounds.width);
+      const maxTop = Math.max(0, window.innerHeight - bounds.height);
+      mascot.style.left = `${Math.max(0, Math.min(left, maxLeft))}px`;
+      mascot.style.top = `${Math.max(0, Math.min(top, maxTop))}px`;
+      mascot.style.right = 'auto';
+      mascot.style.bottom = 'auto';
+    };
+
+    mascot.addEventListener('pointerdown', (event) => {
+      if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) {
+        return;
+      }
+
+      event.preventDefault();
+      mascot.classList.add('is-moved');
+      mascot.classList.add('is-dragging');
+      const bounds = mascot.getBoundingClientRect();
+      dragOffsetX = event.clientX - bounds.left;
+      dragOffsetY = event.clientY - bounds.top;
+      placeMascot(bounds.left, bounds.top);
+      mascot.setPointerCapture(event.pointerId);
+    });
+
+    mascot.addEventListener('pointermove', (event) => {
+      if (mascot.hasPointerCapture(event.pointerId)) {
+        placeMascot(event.clientX - dragOffsetX, event.clientY - dragOffsetY);
+      }
+    });
+
+    const stopDragging = (event) => {
+      if (mascot.hasPointerCapture(event.pointerId)) {
+        mascot.releasePointerCapture(event.pointerId);
+      }
+      mascot.classList.remove('is-dragging');
+    };
+
+    mascot.addEventListener('pointerup', stopDragging);
+    mascot.addEventListener('pointercancel', stopDragging);
+
+    mascot.addEventListener('keydown', (event) => {
+      const movement = event.shiftKey ? 40 : 16;
+      if (event.key.startsWith('Arrow')) {
+        mascot.classList.add('is-moved');
+      }
+      const bounds = mascot.getBoundingClientRect();
+      const positions = {
+        ArrowUp: [bounds.left, bounds.top - movement],
+        ArrowDown: [bounds.left, bounds.top + movement],
+        ArrowLeft: [bounds.left - movement, bounds.top],
+        ArrowRight: [bounds.left + movement, bounds.top]
+      };
+      const nextPosition = positions[event.key];
+
+      if (nextPosition) {
+        event.preventDefault();
+        placeMascot(...nextPosition);
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (mascot.style.left && mascot.style.top) {
+        const bounds = mascot.getBoundingClientRect();
+        placeMascot(bounds.left, bounds.top);
+      }
+    });
+  }
+
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.navlinks');
 
@@ -75,6 +214,36 @@ document.addEventListener('DOMContentLoaded', () => {
       if (event.target === projectModal) {
         projectModal.close();
       }
+    });
+  }
+
+  const inquiryForm = document.querySelector('#project-inquiry-form');
+  const inquiryStatus = document.querySelector('#inquiry-status');
+
+  if (inquiryForm instanceof HTMLFormElement && inquiryStatus) {
+    inquiryForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(inquiryForm);
+      const getValue = (name) => String(formData.get(name) || '').trim();
+      const name = getValue('name');
+      const email = getValue('email');
+      const project = getValue('project');
+      const budget = getValue('budget') || 'Not specified';
+      const timeline = getValue('timeline') || 'Not specified';
+      const subject = `Project inquiry from ${name}`;
+      const body = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Budget: ${budget}`,
+        `Ideal timeline: ${timeline}`,
+        '',
+        'Project details:',
+        project
+      ].join('\n');
+
+      inquiryStatus.textContent = 'Your email app should open with the message ready. If it doesn’t, use the direct email link above.';
+      window.location.href = `mailto:heoiscod@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   }
 

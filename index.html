@@ -57,6 +57,34 @@
 
   <header class="hero" id="home">
     <div class="hero-grid"></div>
+    <figure class="hero-mascot" tabindex="0" aria-label="Cute robot mascot. Drag to move, or focus and use the arrow keys.">
+      <svg class="robot-mascot" viewBox="0 0 300 330" role="img" aria-hidden="true">
+        <ellipse class="robot-shadow" cx="150" cy="301" rx="91" ry="15"/>
+        <g class="robot-head-group">
+          <path class="robot-antenna" d="M150 59V39"/>
+          <circle class="robot-antenna-tip" cx="150" cy="31" r="11"/>
+          <rect class="robot-ear" x="30" y="130" width="30" height="58" rx="14"/>
+          <rect class="robot-ear" x="240" y="130" width="30" height="58" rx="14"/>
+          <rect class="robot-head" x="51" y="62" width="198" height="190" rx="55"/>
+          <rect class="robot-face" x="72" y="87" width="156" height="126" rx="39"/>
+          <circle class="robot-eye" cx="117" cy="145" r="11"/>
+          <circle class="robot-eye" cx="183" cy="145" r="11"/>
+          <path class="robot-brow robot-brow-left" d="m101 127 27 8"/>
+          <path class="robot-brow robot-brow-right" d="m172 135 27-8"/>
+          <circle class="robot-eye-glint" cx="120" cy="141" r="3"/>
+          <circle class="robot-eye-glint" cx="186" cy="141" r="3"/>
+          <ellipse class="robot-cheek" cx="91" cy="168" rx="10" ry="5"/>
+          <ellipse class="robot-cheek" cx="209" cy="168" rx="10" ry="5"/>
+          <path class="robot-smile" d="M132 171q18 17 36 0"/>
+          <path class="robot-frown" d="M132 184q18-17 36 0"/>
+          <circle class="robot-bolt" cx="77" cy="226" r="4"/>
+          <circle class="robot-bolt" cx="223" cy="226" r="4"/>
+        </g>
+        <path class="robot-neck" d="M132 252v18m36-18v18"/>
+        <path class="robot-base" d="M102 283q4-22 26-22h44q22 0 26 22"/>
+      </svg>
+      <figcaption class="robot-caption"><span aria-hidden="true">✦</span> YOUR FRIENDLY DEV BOT</figcaption>
+    </figure>
     <div class="glitch-wrap">
       <p class="eyebrow">Freelance Web Developer</p>
       <h1 class="glitch" data-text="BUILDING&#10;THINGS THAT&#10;DON'T BREAK.">
@@ -70,7 +98,8 @@
         solutions without unnecessary complexity. <b>I'm currently available</b> for freelance projects.
       </p>
       <div class="hero-cta">
-        <a href="#services" class="btn">View Services</a>
+        <a href="#contact" class="btn">Start a Project</a>
+        <a href="#services" class="btn ghost">View Services</a>
         <a href="#blog" class="btn ghost">Read the Blog</a>
       </div>
       <div class="terminal-tag">
@@ -176,27 +205,18 @@
         </a>
 
         <section class="project-detail">
-          <h3>ABOUT THE PROJECT</h3>
-          <p>A booking system for Pickle Social Cebu, helping its pickleball community arrange bookings in one place.</p>
+          <h3>THE CHALLENGE</h3>
+          <p>Pickle Social Cebu needed a straightforward online way for its pickleball community to arrange court bookings.</p>
         </section>
 
         <section class="project-detail">
-          <h3>LOCATION</h3>
-          <p>It is made for the pickleball community in Cebu, Philippines. The specific venue can be added when confirmed.</p>
+          <h3>THE APPROACH</h3>
+          <p>I built a dedicated booking website that brings the reservation experience online and keeps the next step clear for visitors.</p>
         </section>
 
         <section class="project-detail">
-          <h3>DEVELOPMENT</h3>
-          <p>I developed it as a digital booking system for Pickle Social Cebu. The goal was to make arranging a booking straightforward for the pickleball community.</p>
-        </section>
-
-        <section class="project-detail">
-          <h3>LESSONS LEARNED</h3>
-          <ul>
-            <li>A booking flow should make the next step clear to users.</li>
-            <li>Keep booking details easy to review before users confirm.</li>
-            <li>Design for mobile so users can make bookings wherever they are.</li>
-          </ul>
+          <h3>THE RESULT</h3>
+          <p>The booking system is live for the Pickle Social Cebu community. Visit the live site above to see the experience.</p>
         </section>
       </div>
     </div>
@@ -208,19 +228,43 @@
       <span class="tag">notes &amp; logs</span>
     </div>
     <div class="blog-list">
-      <div class="coming-soon-block">
-        <h3>COMING SOON</h3>
-        <p>Blog posts are being prepared.</p>
-        <div class="download-meter uploading-meter">
-          <div class="download-head">
-            <span>UPLOADING</span>
-            <strong>50%</strong>
-          </div>
-          <div class="download-bar">
-            <span></span>
-          </div>
-        </div>
-      </div>
+      <a class="blog-row" href="/blog/first-react-project">
+        <span class="date">2026.07.28</span>
+        <span class="blog-row-copy">
+          <span class="blog-row-category">WEB DEVELOPMENT</span>
+          <span class="blog-row-title">What I learned building my first React project</span>
+          <span class="blog-row-description">Notes on components, reusable UI, and learning one piece at a time.</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="blog-row" href="/blog/student-freelancing">
+        <span class="date">2026.07.12</span>
+        <span class="blog-row-copy">
+          <span class="blog-row-category">CAREER</span>
+          <span class="blog-row-title">A student's guide to freelancing while studying IT</span>
+          <span class="blog-row-description">How to scope small services and plan around a student schedule.</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="blog-row" href="/blog/debugging-tips">
+        <span class="date">2026.06.30</span>
+        <span class="blog-row-copy">
+          <span class="blog-row-category">DEBUGGING</span>
+          <span class="blog-row-title">Debugging tips that actually saved my thesis project</span>
+          <span class="blog-row-description">A practical, systematic way to find the source of a bug.</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="blog-row" href="/blog/home-lab">
+        <span class="date">2026.06.15</span>
+        <span class="blog-row-copy">
+          <span class="blog-row-category">HOME LAB</span>
+          <span class="blog-row-title">Setting up a home lab on a student budget</span>
+          <span class="blog-row-description">Start learning infrastructure with the equipment you already have.</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="blog-index-link" href="/blog">VIEW ALL POSTS <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -246,8 +290,49 @@
     </div>
     <div class="contact-card">
       <p>
-        If you're looking for a freelance web developer to bring your ideas online, send me a message and I’ll get back to you within 24 hours.
+        Tell me a little about what you need. I’ll get back to you within 24 hours.
       </p>
+      <form class="inquiry-form" id="project-inquiry-form">
+        <div class="inquiry-fields">
+          <label class="inquiry-field">
+            <span>Your name</span>
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label class="inquiry-field">
+            <span>Email address</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label class="inquiry-field">
+            <span>What do you need?</span>
+            <textarea name="project" rows="4" required></textarea>
+          </label>
+          <label class="inquiry-field">
+            <span>Budget (PHP) <span class="optional-label">optional</span></span>
+            <select name="budget">
+              <option value="">Not sure yet</option>
+              <option value="Under ₱5,000">Under ₱5,000</option>
+              <option value="₱5,000–₱15,000">₱5,000–₱15,000</option>
+              <option value="₱15,000–₱30,000">₱15,000–₱30,000</option>
+              <option value="₱30,000+">₱30,000+</option>
+            </select>
+          </label>
+          <label class="inquiry-field">
+            <span>Ideal timeline <span class="optional-label">optional</span></span>
+            <select name="timeline">
+              <option value="">Flexible / not sure</option>
+              <option value="As soon as possible">As soon as possible</option>
+              <option value="Within a month">Within a month</option>
+              <option value="In 1–3 months">In 1–3 months</option>
+              <option value="More than 3 months">More than 3 months</option>
+            </select>
+          </label>
+        </div>
+        <button class="btn inquiry-submit" type="submit">Create Email <span aria-hidden="true">↗</span></button>
+        <p class="inquiry-note">
+          This opens your email app. If it doesn’t, <a href="mailto:heoiscod@gmail.com">email me directly</a>.
+        </p>
+        <p class="inquiry-status" id="inquiry-status" aria-live="polite"></p>
+      </form>
       <div class="contact-links">
         <a href="mailto:heoiscod@gmail.com" class="btn">
           <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -291,8 +376,12 @@
       <a href="#languages">Languages</a>
     </div>
     <div class="copyright">© <span id="year"></span> &nbsp;@heoiscode</div>
+    <div class="visitor-count" id="visitor-count" aria-live="polite">PAGE VIEWS // Loading</div>
   </footer>
 
+  <div class="custom-cursor" aria-hidden="true">
+    <span class="custom-cursor-dot"></span>
+  </div>
   <script src="assets/js/script.js"></script>
 </body>
 </html>
